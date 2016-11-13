@@ -54,7 +54,7 @@ if ($result = $mysqli->query($strsql)) {
     <div class="">
         <img class="newappIcon" src="images/newapp-icon.png" />
         <h1>
-					Welcome to the <span class="blue">PHP MySQL Sample</span> on Bluemix!
+					Welcome to the <span class="blue">PHP MySQL Sample</span> on Cloud Foundry!
 				</h1>
         <p class="description">This introductory sample allows you to insert messages into a MySQL database. <br>
 
