@@ -10,5 +10,6 @@ applications:
   name: php-mysql
   instances: 1
   memory: 256M
+  buildpack: php_buildpack # this is optional
   services:
     - php-mysql-db
