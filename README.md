@@ -15,6 +15,14 @@ cf create-service p-mysql 100mb php-mysql-db
 cf push
 ```
 
+# Session in Redis
+
+The application can also demonstrate Redis backend for PHP session with buildpack activated service.
+```
+# service name must contain redis-sessions
+cf create-service p-redis shared-vm redis-sessions-demo
+```
+
 # Note on working offline (private platform offline with no internet access)
 
 The PHP buildpack can activate and download dependencies from the internet but on offline private platform this is not possible.

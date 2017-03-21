@@ -1,3 +1,7 @@
+<?php
+// for redis session demo
+session_start();
+?>
 <!--
 /**
 * Copyright 2015 IBM Corp. All Rights Reserved.
@@ -15,7 +19,6 @@
 * limitations under the License.
 */
 ->
-
 <?php include 'db.php';?>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") { //if new message is being added
@@ -56,6 +59,21 @@ if ($result = $mysqli->query($strsql)) {
         <h1>
 					Welcome to the <span class="blue">PHP MySQL Sample</span> on Cloud Foundry!
 				</h1>
+
+<?php
+
+$count = isset($_SESSION['count']) ? $_SESSION['count'] : 1;
+
+?>
+<p class="description">The 'count' value was put in your session and incremented. It will be managed by a Redis service if one is attached to the application using a buildpack activated service.</p>
+Value for 'count' = <?php echo $count; ?></br>
+Page provided by application index ENV['CF_INSTANCE_INDEX'] = <?php echo $_ENV['CF_INSTANCE_INDEX']; ?><br/>
+<?php
+$_SESSION['count'] = ++$count;
+?>
+<hr/>
+
+
         <p class="description">This introductory sample allows you to insert messages into a MySQL database. <br>
 
 
@@ -101,7 +119,7 @@ if ($result = $mysqli->query($strsql)) {
         </tr>
         </tbody>
     </table>
-    </div>
+</div>
 </body>
 
 </html>
