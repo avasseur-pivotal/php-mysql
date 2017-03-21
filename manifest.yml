@@ -3,7 +3,7 @@
 # Create an instance of a MySQL db
 # using Pivotal MySQL tile on Pivotal Cloud Foundry with:
 #
-# cf create-service p-mysql 100mb php-mysql-db 
+# cf create-service p-mysql 100mb php-mysql-db
 #
 applications:
 - disk_quota: 256M

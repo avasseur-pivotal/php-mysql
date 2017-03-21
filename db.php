@@ -23,11 +23,12 @@ if(!$_ENV["VCAP_SERVICES"]){ //local dev
     $mysql_username = "root";
     $mysql_password = "";
     $mysql_database = "test";
-} else { //running in Bluemix
+} else { //running in PCF
     $vcap_services = json_decode($_ENV["VCAP_SERVICES" ]);
-    if($vcap_services->{'p-mysql'}){ //if "mysql" db service is bound to this application
+    if($vcap_services->{'p-mysql'}){ //if a service of type "p-mysql" db service is bound to this application
         $db = $vcap_services->{'p-mysql'}[0]->credentials;
     } 
+    //running in PWS
     else if($vcap_services->{'cleardb'}){ //if cleardb mysql db service is bound to this application
         $db = $vcap_services->{'cleardb'}[0]->credentials;
     } 
