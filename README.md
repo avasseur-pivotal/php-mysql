@@ -15,10 +15,19 @@ cf create-service p-mysql 100mb php-mysql-db
 cf push
 ```
 
+# Note on working offline (private platform offline with no internet access)
+
+The PHP buildpack can activate and download dependencies from the internet but on offline private platform this is not possible.
+
+The application has thus a `.bp-config/` to explicitly activate PHP dependencies that are used by the application.
+These dependencies are included in the buildpack release but are only staged into the container if they are needed.
+
+(refer to the php buildpack docs for more details)
+https://docs.cloudfoundry.org/buildpacks/php/gsg-php-config.html
 
 
 ## Credits
 
 Forked from https://github.com/IBM-Bluemix/php-mysql
-The Bluemix version relies on proprietary Bluemix manifest.yml extensions _declared-services_
+The Bluemix version relies on proprietary Bluemix manifest.yml extensions _declared-services_ and does not have correct offline behavior
 
