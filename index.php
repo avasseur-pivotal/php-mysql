@@ -57,8 +57,9 @@ if ($result = $mysqli->query($strsql)) {
     <div class="">
         <img class="newappIcon" src="images/newapp-icon.png" />
         <h1>
-					Welcome to the <span class="blue">PHP MySQL Sample</span> on Cloud Foundry!
+					Welcome to the <span class="blue">PHP MySQL & Redis sample application</span> on Cloud Foundry!
 				</h1>
+        <h1><img src="images/logo_pas.png"/></h1>
 
 <?php
 
@@ -68,6 +69,7 @@ $count = isset($_SESSION['count']) ? $_SESSION['count'] : 1;
 <p class="description">The 'count' value was put in your session and incremented. It will be managed by a Redis service if one is attached to the application using a buildpack activated service.</p>
 Value for 'count' = <?php echo $count; ?></br>
 Page provided by application index ENV['CF_INSTANCE_INDEX'] = <?php echo $_ENV['CF_INSTANCE_INDEX']; ?><br/>
+<h2><span class="blue">Container Instance : <?php echo $_ENV['CF_INSTANCE_INDEX']; ?></span></h2>
 <?php
 $_SESSION['count'] = ++$count;
 ?>
@@ -80,9 +82,9 @@ $_SESSION['count'] = ++$count;
             <input type="button" class = "mybutton" onclick="window.location = 'init.php';" class="btn" value="(Re-)Create table"></input></p>
             </br>
 
-    
+
     <table id='notes' class='records'><tbody>
-        
+
         <?php
             echo "<tr>\n";
             while ($property = mysqli_fetch_field($result)) {
@@ -95,7 +97,7 @@ $_SESSION['count'] = ++$count;
             if($result->num_rows == 0){ //nothing in the table
                         echo '<td>Empty!</td>';
             }
-                
+
             while ( $row = mysqli_fetch_row ( $result ) ) {
                 echo "<tr>\n";
                 for($i = 0; $i < mysqli_num_fields ( $result ); $i ++) {
@@ -108,13 +110,13 @@ $_SESSION['count'] = ++$count;
             mysqli_close();
         ?>
         <tr>
-            <form method = "POST"> <!--FORM: will submit to same page (index.php), and if ($_SERVER["REQUEST_METHOD"] == "POST") will catch it --> 
+            <form method = "POST"> <!--FORM: will submit to same page (index.php), and if ($_SERVER["REQUEST_METHOD"] == "POST") will catch it -->
                 <td colspan = "2">
                 <input type = "text" style = "width:100%" name = "message" autofocus onchange="saveChange(this)" onkeydown="onKey(event)"></input>
                 </td>
                 <td>
                     <button class = "mybutton" type = "submit">Add New Message</button></td></tr>
-                </td> 
+                </td>
             </form>
         </tr>
         </tbody>

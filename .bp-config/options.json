@@ -1,3 +1,4 @@
 {
-    "PHP_EXTENSIONS": ["mysqli"]
+    "PHP_EXTENSIONS": ["mysqli"],
+    "PHP_VERSION": "{PHP_70_LATEST}"
 }
